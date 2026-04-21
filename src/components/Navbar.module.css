@@ -1,0 +1,48 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: Roboto, sans-serif;
+}
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: hsla(0, 0%, 100%, .745);
+    height: 80px;
+    border-bottom: .0625rem solid rgba(96, 96, 96, .3);
+    position: sticky;
+    z-index: 12;
+    top: 0;
+    backdrop-filter: blur(.625rem);
+    padding-left: 120px;
+    padding-right: 120px;
+}
+
+.logo{
+   font-size: 20px;
+    
+}
+
+.elems{
+    
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.elems a{
+    text-decoration: none;
+    color: #000000;
+
+}
+.elems button{
+    border: .0625rem solid #dfe0e3;
+    border-radius: 4.25rem;
+    padding: 5px 1.25rem;
+    font-family: Inter, sans-serif;
+    cursor: pointer;
+    text-decoration: none;
+    background-color: transparent;
+}
