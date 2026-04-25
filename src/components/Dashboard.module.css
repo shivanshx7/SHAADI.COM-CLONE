@@ -1,4 +1,4 @@
-/* ─── Reset & Base ─────────────────────────────────── */
+
 .page {
   min-height: 100vh;
   background: #f5f5f0;
@@ -7,7 +7,6 @@
   color: #333;
 }
 
-/* ─── Top Orange Nav ───────────────────────────────── */
 .topNav {
   background: linear-gradient(135deg, #f07b1d 0%, #e8630a 100%);
   box-shadow: 0 2px 8px rgba(0,0,0,0.25);
@@ -102,7 +101,6 @@
   cursor: pointer;
 }
 
-/* ─── Cert Bar ─────────────────────────────────────── */
 .certBar {
   background: #fffde7;
   border-bottom: 1px solid #f0e68c;
@@ -113,7 +111,6 @@
   font-weight: 500;
 }
 
-/* ─── Body Layout ──────────────────────────────────── */
 .body {
   max-width: 1280px;
   margin: 0 auto;
@@ -124,7 +121,6 @@
   align-items: start;
 }
 
-/* ─── Sidebar ──────────────────────────────────────── */
 .sidebar {
   display: flex;
   flex-direction: column;
@@ -267,7 +263,6 @@
 }
 .usefulLink:hover { text-decoration: underline; }
 
-/* ─── Main Content ─────────────────────────────────── */
 .main {
   background: #fff;
   border: 1px solid #ddd;
@@ -285,7 +280,6 @@
   margin: 0;
 }
 
-/* Toolbar */
 .toolbar {
   display: flex;
   align-items: center;
@@ -320,7 +314,6 @@
 }
 .filterSelect option { background: #fff; color: #333; }
 
-/* ─── Profile Cards ────────────────────────────────── */
 .cardList {
   display: flex;
   flex-direction: column;
@@ -342,7 +335,6 @@
 
 .cardCheck { cursor: pointer; margin-top: 4px; accent-color: #e8630a; }
 
-/* Avatar */
 .avatarWrap {
   width: 72px;
   height: 72px;
@@ -378,7 +370,6 @@
 }
 .avatarWrap:hover .avatarOverlay { opacity: 1; }
 
-/* Hover Tooltip */
 .tooltip {
   position: absolute;
   left: 80px;
@@ -418,7 +409,6 @@
 }
 .tooltipLinks a:hover { text-decoration: underline; }
 
-/* Card Body */
 .cardBody { flex: 1; }
 
 .cardTop {
@@ -505,7 +495,6 @@
   margin-top: 2px;
 }
 
-/* ─── Right Profile Panel ──────────────────────────── */
 .profilePanel {
   background: #fff;
   border: 1px solid #ddd;
@@ -618,7 +607,6 @@
 }
 .previewLink:hover { text-decoration: underline; }
 
-/* Profile Tabs */
 .profileTabs {
   display: flex;
   border-bottom: 1px solid #eee;
@@ -673,7 +661,6 @@
 }
 .bLabel { color: #999; white-space: nowrap; }
 
-/* ─── Gender Dropdown ─────────────────────────────── */
 .genderDropdown {
   display: flex;
   align-items: center;
@@ -699,7 +686,6 @@
 .genderSelect:hover { background-color: rgba(255,255,255,0.3); }
 .genderSelect option { background: #333; color: #fff; }
 
-/* ─── Search Bar ─────────────────────────────────── */
 .searchBar {
   display: flex;
   align-items: center;
@@ -737,7 +723,6 @@
 .clearSearch:hover { color: #e8630a; }
 .resultCount { font-size: 12px; color: #888; margin-left: 6px; }
 
-/* No Results State */
 .noResults {
   display: flex;
   flex-direction: column;
@@ -750,7 +735,6 @@
 .noResults span { font-size: 42px; }
 .noResults p { font-size: 14px; }
 
-/* ─── Inbox Layout ───────────────────────────────── */
 .inboxLayout {
   background: #fff;
   border: 1px solid #ddd;
@@ -837,7 +821,6 @@
   margin-top: 4px;
 }
 
-/* Chat window */
 .chatWindow {
   flex: 1;
   display: flex;
@@ -945,7 +928,6 @@
 .chatEmpty span { font-size: 48px; }
 .chatEmpty p { font-size: 14px; }
 
-/* ─── Explore Grid ───────────────────────────────── */
 .exploreSubtitle {
   font-size: 13px;
   color: #888;
@@ -1024,7 +1006,6 @@
 }
 .connectBtn:hover { opacity: 0.88; }
 
-/* ─── Search Page ────────────────────────────────── */
 .searchContainer {
   display: flex;
   flex-direction: column;
@@ -1152,7 +1133,6 @@
   color: #fff;
 }
 
-/* Detail View */
 .searchDetailView {
   display: flex;
   flex-direction: column;
