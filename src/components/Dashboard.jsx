@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react'
 import styles from './Dashboard.module.css'
+import MyShaadiDashboard from './MyShaadiDashboard'
 
 // ─── Mock Data ────────────────────────────────────────────────────────────────
 const femaleProfiles = [
@@ -179,7 +180,7 @@ const maleExploreProfiles = [
 const initials = (name) => name.split(' ').map(n => n[0]).join('').toUpperCase()
 
 export default function Dashboard({ onNavigate }) {
-  const [activeNavItem, setActiveNavItem] = useState('Inbox')
+  const [activeNavItem, setActiveNavItem] = useState('My Shaadi')
   const [activeSection, setActiveSection] = useState('Interests & Requests')
   const [filter, setFilter] = useState('All Pending')
   const [accepted, setAccepted] = useState({})
@@ -446,6 +447,15 @@ export default function Dashboard({ onNavigate }) {
   )
 
   const renderMain = () => {
+    if (activeNavItem === 'My Shaadi') {
+      return (
+        <MyShaadiDashboard
+          myProfile={myProfile}
+          profiles={profiles}
+          exploreShortlisted={exploreShortlisted}
+        />
+      )
+    }
     if (activeNavItem === 'Inbox') return renderInbox()
     if (activeNavItem === 'Explore') return renderExplore()
     return renderInterests()

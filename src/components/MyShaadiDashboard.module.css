@@ -1,0 +1,239 @@
+.main {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  min-height: 600px;
+}
+
+/* ── My Shaadi Dashboard ── */
+.msWelcomeBanner {
+  background: #e8630a;
+  border-radius: 12px;
+  padding: 30px;
+  color: #fff;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 10px rgba(232, 99, 10, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+.msWelcomeBanner::after {
+  content: '';
+  position: absolute;
+  top: -50%; right: -10%;
+  width: 200px; height: 200px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  transform: rotate(-45deg);
+}
+.msWelcomeText h1 {
+  font-size: 28px;
+  margin: 0 0 10px 0;
+  font-weight: 700;
+}
+.msWelcomeText p {
+  font-size: 15px;
+  margin: 0;
+  opacity: 0.9;
+}
+
+.msDashboardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
+  margin-bottom: 20px;
+}
+.msStatCard {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 18px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+.msStatCard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+  border-color: #ffb4a2;
+}
+.msStatIcon {
+  font-size: 24px;
+  background: #fff5f2;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+.msStatInfo h3 {
+  font-size: 13px;
+  color: #666;
+  margin: 0 0 4px 0;
+  font-weight: 500;
+}
+.msStatInfo span {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+.msProfileProgressCard {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+.msProgressHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.msProgressHeader h3 {
+  margin: 0;
+  font-size: 16px;
+  color: #333;
+}
+.msProgressHeader span {
+  font-size: 18px;
+  font-weight: 700;
+  color: #00bcd4;
+}
+.msProgressBarBg {
+  background: #f0f0f0;
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+.msProgressBarFill {
+  background: #e8630a;
+  height: 100%;
+  border-radius: 4px;
+  transition: width 1s ease-in-out;
+}
+.msProfileProgressCard p {
+  font-size: 13px;
+  color: #666;
+  margin: 0 0 15px 0;
+}
+.msCompleteBtn {
+  background: #fff;
+  color: #00bcd4;
+  border: 1px solid #00bcd4;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.msCompleteBtn:hover {
+  background: #00bcd4;
+  color: #fff;
+}
+
+.msRecentActivity {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+.msRecentActivity h3 {
+  margin: 0 0 18px 0;
+  font-size: 16px;
+  color: #333;
+}
+.msActivityList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.msActivityList li {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 12px 0;
+  border-bottom: 1px solid #f5f5f5;
+}
+.msActivityList li:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+.msActivityAvatar {
+  width: 40px;
+  height: 40px;
+  background: #f4f4f4;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+.msActivityDetails {
+  flex: 1;
+}
+.msActivityDetails p {
+  margin: 0 0 4px 0;
+  font-size: 14px;
+  color: #444;
+}
+.msActivityDetails p strong {
+  color: #333;
+}
+.msActivityDetails span {
+  font-size: 12px;
+  color: #999;
+}
+.msViewBtn {
+  background: transparent;
+  color: #00bcd4;
+  border: 1px solid #00bcd4;
+  padding: 6px 12px;
+  border-radius: 15px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.msViewBtn:hover {
+  background: #e0f7fa;
+}
+
+.msUpgradeBanner {
+  background: #333;
+  border-radius: 12px;
+  padding: 24px;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.msUpgradeContent h3 {
+  margin: 0 0 8px 0;
+  font-size: 18px;
+}
+.msUpgradeContent p {
+  margin: 0;
+  font-size: 14px;
+  opacity: 0.85;
+}
+.msUpgradeBtn {
+  background: #ffc107;
+  color: #333;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s;
+  white-space: nowrap;
+}
+.msUpgradeBtn:hover {
+  transform: scale(1.05);
+}
