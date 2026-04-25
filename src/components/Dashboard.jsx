@@ -191,6 +191,10 @@ export default function Dashboard({ onNavigate }) {
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedInbox, setSelectedInbox] = useState(inboxMessages[0])
   const [exploreShortlisted, setExploreShortlisted] = useState({})
+  
+  // Search component state
+  const [globalSearchInput, setGlobalSearchInput] = useState('')
+  const [selectedSearchProfile, setSelectedSearchProfile] = useState(null)
 
   const navItems = ['My Shaadi', 'Search', 'Matches', 'Inbox', 'Explore']
   const profiles = gender === 'female' ? femaleProfiles : maleProfiles
@@ -446,6 +450,129 @@ export default function Dashboard({ onNavigate }) {
     </div>
   )
 
+  const renderSearchPage = () => {
+    const allMockData = [...femaleProfiles, ...maleProfiles, ...exploreProfiles, ...maleExploreProfiles]
+    let results = []
+    
+    if (globalSearchInput.trim()) {
+      const q = globalSearchInput.toLowerCase()
+      results = allMockData.filter(p => 
+        (p.name && p.name.toLowerCase().includes(q)) ||
+        (p.profession && p.profession.toLowerCase().includes(q)) ||
+        (p.location && p.location.toLowerCase().includes(q)) ||
+        (p.caste && p.caste.toLowerCase().includes(q)) ||
+        (p.username && p.username.toLowerCase().includes(q)) ||
+        (p.id && String(p.id).includes(q))
+      )
+    }
+
+    return (
+      <div className={styles.main}>
+        {selectedSearchProfile ? (
+          <div className={styles.searchDetailView}>
+            <div className={styles.detailBackBar}>
+              <button className={styles.backBtn} onClick={() => setSelectedSearchProfile(null)}>
+                ← Back to Search Results
+              </button>
+            </div>
+            
+            <div className={styles.detailCard}>
+               <div className={styles.detailAvatar} style={{ background: selectedSearchProfile.color || '#e8a87c' }}>
+                 {initials(selectedSearchProfile.name)}
+               </div>
+               
+               <div className={styles.detailInfo}>
+                 <h2 className={styles.detailName}>{selectedSearchProfile.name} <span className={styles.detailId}>({selectedSearchProfile.id})</span></h2>
+                 <p className={styles.detailSubtitle}>
+                   {selectedSearchProfile.age} Yrs • {selectedSearchProfile.height || 'N/A'} • {selectedSearchProfile.religion || 'Hindu'}, {selectedSearchProfile.caste || 'Any'}
+                 </p>
+                 
+                 <div className={styles.detailGrid}>
+                   <div className={styles.detailGridItem}>
+                     <span className={styles.detailGridLabel}>Profession</span>
+                     <span className={styles.detailGridValue}>{selectedSearchProfile.profession}</span>
+                   </div>
+                   <div className={styles.detailGridItem}>
+                     <span className={styles.detailGridLabel}>Location</span>
+                     <span className={styles.detailGridValue}>{selectedSearchProfile.location}</span>
+                   </div>
+                   {selectedSearchProfile.compat && (
+                     <div className={styles.detailGridItem}>
+                       <span className={styles.detailGridLabel}>Compatibility</span>
+                       <span className={styles.detailGridValue}>{selectedSearchProfile.compat}</span>
+                     </div>
+                   )}
+                 </div>
+                 
+                 <div className={styles.detailBio}>
+                    Here is a summary of {selectedSearchProfile.name}'s profile. This person is looking for a meaningful connection with common values and interests. Take the next step to communicate if you find this profile suitable.
+                 </div>
+                 
+                 <div className={styles.detailActions}>
+                   <button className={styles.connectBtnLarge}>Connect Now</button>
+                   <button className={styles.shortlistBtnLarge}>Shortlist Profile</button>
+                 </div>
+               </div>
+            </div>
+          </div>
+        ) : (
+          <div className={styles.searchContainer}>
+            <div className={styles.mainHeader}>
+              <h1 className={styles.pageTitle}>Search Profiles</h1>
+              <p className={styles.exploreSubtitle}>Find members by name, profession, location, or ID</p>
+            </div>
+            <div className={styles.globalSearchWrap}>
+              <span className={styles.searchIcon}>🔍</span>
+              <input
+                className={styles.globalSearchInputBox}
+                placeholder="Start typing to search the database..."
+                value={globalSearchInput}
+                onChange={e => setGlobalSearchInput(e.target.value)}
+              />
+              {globalSearchInput && (
+                <button className={styles.clearGlobalSearch} onClick={() => setGlobalSearchInput('')}>✕</button>
+              )}
+            </div>
+            
+            <div className={styles.searchResultsWrap}>
+              {globalSearchInput.trim() === '' ? (
+                <div className={styles.searchEmptyState}>
+                  <span className={styles.searchEmptyIcon}>🌍</span>
+                  <p>Discover matches from thousands of verified profiles.</p>
+                </div>
+              ) : results.length === 0 ? (
+                <div className={styles.searchEmptyState}>
+                  <span className={styles.searchEmptyIcon}>😔</span>
+                  <p>No profiles found matching "{globalSearchInput}"</p>
+                </div>
+              ) : (
+                <div className={styles.searchResultGrid}>
+                  {results.map(p => (
+                    <div 
+                      key={p.id} 
+                      className={styles.searchResultItem}
+                      onClick={() => setSelectedSearchProfile(p)}
+                    >
+                      <div className={styles.resultAvatar} style={{ background: p.color || '#aaa' }}>
+                        {initials(p.name)}
+                      </div>
+                      <div className={styles.resultDetails}>
+                        <div className={styles.resultName}>{p.name}</div>
+                        <div className={styles.resultSub}>{p.profession}</div>
+                        <div className={styles.resultSubAlt}>{p.location}</div>
+                      </div>
+                      <button className={styles.viewProfileBtnMini}>View Details</button>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+      </div>
+    )
+  }
+
   const renderMain = () => {
     if (activeNavItem === 'My Shaadi') {
       return (
@@ -458,6 +585,7 @@ export default function Dashboard({ onNavigate }) {
     }
     if (activeNavItem === 'Inbox') return renderInbox()
     if (activeNavItem === 'Explore') return renderExplore()
+    if (activeNavItem === 'Search') return renderSearchPage()
     return renderInterests()
   }
 
