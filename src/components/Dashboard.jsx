@@ -2,7 +2,6 @@ import { useState, useMemo } from 'react'
 import styles from './Dashboard.module.css'
 import MyShaadiDashboard from './MyShaadiDashboard'
 
-// ─── Mock Data ────────────────────────────────────────────────────────────────
 const femaleProfiles = [
   {
     id: 1, name: 'Priya S', username: 'priya_sharma_1990',
@@ -129,7 +128,6 @@ const maleProfiles = [
   },
 ]
 
-// Inbox mock messages
 const inboxMessages = [
   {
     id: 1, from: 'Priya S', username: 'priya_sharma_1990', time: '10:30 AM',
@@ -158,7 +156,6 @@ const inboxMessages = [
   },
 ]
 
-// Explore mock profiles
 const exploreProfiles = [
   { id: 201, name: 'Isha T', age: 26, profession: 'UX Designer', location: 'Mumbai', compat: '94%', color: '#ff9a8b' },
   { id: 202, name: 'Meera K', age: 28, profession: 'Surgeon', location: 'Delhi', compat: '91%', color: '#a18cd1' },
@@ -187,12 +184,12 @@ export default function Dashboard({ onNavigate }) {
   const [declined, setDeclined] = useState({})
   const [hoveredProfile, setHoveredProfile] = useState(null)
   const [activeTab, setActiveTab] = useState('interests')
-  const [gender, setGender] = useState('female')     // 'female' | 'male'
+  const [gender, setGender] = useState('female')
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedInbox, setSelectedInbox] = useState(inboxMessages[0])
   const [exploreShortlisted, setExploreShortlisted] = useState({})
-  
-  // Search component state
+
+
   const [globalSearchInput, setGlobalSearchInput] = useState('')
   const [selectedSearchProfile, setSelectedSearchProfile] = useState(null)
 
@@ -215,7 +212,7 @@ export default function Dashboard({ onNavigate }) {
     '2-way Matches', 'Add Saved Searches', 'My Help',
   ]
 
-  // Search filtered profiles
+
   const filteredProfiles = useMemo(() => {
     let list = profiles
     if (filter === 'New Interests') list = list.filter(p => p.type === 'Interest')
@@ -238,7 +235,7 @@ export default function Dashboard({ onNavigate }) {
         <h1 className={styles.pageTitle}>Interests &amp; Requests</h1>
       </div>
 
-      {/* Search Bar */}
+      {}
       <div className={styles.searchBar}>
         <span className={styles.searchIcon}>🔍</span>
         <input
@@ -252,7 +249,7 @@ export default function Dashboard({ onNavigate }) {
         )}
       </div>
 
-      {/* Toolbar */}
+      {}
       <div className={styles.toolbar}>
         <div className={styles.toolbarLeft}>
           <input type="checkbox" className={styles.selectAll} />
@@ -274,7 +271,7 @@ export default function Dashboard({ onNavigate }) {
         </div>
       </div>
 
-      {/* Profile Cards */}
+      {}
       <div className={styles.cardList}>
         {filteredProfiles.length === 0 ? (
           <div className={styles.noResults}>
@@ -288,7 +285,7 @@ export default function Dashboard({ onNavigate }) {
           >
             <input type="checkbox" className={styles.cardCheck} />
 
-            {/* Avatar */}
+            {}
             <div
               className={styles.avatarWrap}
               style={{ background: p.color }}
@@ -311,7 +308,7 @@ export default function Dashboard({ onNavigate }) {
               )}
             </div>
 
-            {/* Card Body */}
+            {}
             <div className={styles.cardBody}>
               <div className={styles.cardTop}>
                 <span className={styles.cardType}>{p.type} from </span>
@@ -347,7 +344,7 @@ export default function Dashboard({ onNavigate }) {
 
   const renderInbox = () => (
     <div className={styles.inboxLayout}>
-      {/* Left: Message list */}
+      {}
       <div className={styles.inboxList}>
         <div className={styles.inboxListHeader}>
           <span>Messages</span>
@@ -374,7 +371,7 @@ export default function Dashboard({ onNavigate }) {
         ))}
       </div>
 
-      {/* Right: Chat window */}
+      {}
       {selectedInbox ? (
         <div className={styles.chatWindow}>
           <div className={styles.chatHeader}>
@@ -453,10 +450,10 @@ export default function Dashboard({ onNavigate }) {
   const renderSearchPage = () => {
     const allMockData = [...femaleProfiles, ...maleProfiles, ...exploreProfiles, ...maleExploreProfiles]
     let results = []
-    
+
     if (globalSearchInput.trim()) {
       const q = globalSearchInput.toLowerCase()
-      results = allMockData.filter(p => 
+      results = allMockData.filter(p =>
         (p.name && p.name.toLowerCase().includes(q)) ||
         (p.profession && p.profession.toLowerCase().includes(q)) ||
         (p.location && p.location.toLowerCase().includes(q)) ||
@@ -475,18 +472,18 @@ export default function Dashboard({ onNavigate }) {
                 ← Back to Search Results
               </button>
             </div>
-            
+
             <div className={styles.detailCard}>
                <div className={styles.detailAvatar} style={{ background: selectedSearchProfile.color || '#e8a87c' }}>
                  {initials(selectedSearchProfile.name)}
                </div>
-               
+
                <div className={styles.detailInfo}>
                  <h2 className={styles.detailName}>{selectedSearchProfile.name} <span className={styles.detailId}>({selectedSearchProfile.id})</span></h2>
                  <p className={styles.detailSubtitle}>
                    {selectedSearchProfile.age} Yrs • {selectedSearchProfile.height || 'N/A'} • {selectedSearchProfile.religion || 'Hindu'}, {selectedSearchProfile.caste || 'Any'}
                  </p>
-                 
+
                  <div className={styles.detailGrid}>
                    <div className={styles.detailGridItem}>
                      <span className={styles.detailGridLabel}>Profession</span>
@@ -503,11 +500,11 @@ export default function Dashboard({ onNavigate }) {
                      </div>
                    )}
                  </div>
-                 
+
                  <div className={styles.detailBio}>
                     Here is a summary of {selectedSearchProfile.name}'s profile. This person is looking for a meaningful connection with common values and interests. Take the next step to communicate if you find this profile suitable.
                  </div>
-                 
+
                  <div className={styles.detailActions}>
                    <button className={styles.connectBtnLarge}>Connect Now</button>
                    <button className={styles.shortlistBtnLarge}>Shortlist Profile</button>
@@ -533,7 +530,7 @@ export default function Dashboard({ onNavigate }) {
                 <button className={styles.clearGlobalSearch} onClick={() => setGlobalSearchInput('')}>✕</button>
               )}
             </div>
-            
+
             <div className={styles.searchResultsWrap}>
               {globalSearchInput.trim() === '' ? (
                 <div className={styles.searchEmptyState}>
@@ -548,8 +545,8 @@ export default function Dashboard({ onNavigate }) {
               ) : (
                 <div className={styles.searchResultGrid}>
                   {results.map(p => (
-                    <div 
-                      key={p.id} 
+                    <div
+                      key={p.id}
                       className={styles.searchResultItem}
                       onClick={() => setSelectedSearchProfile(p)}
                     >
@@ -595,7 +592,7 @@ export default function Dashboard({ onNavigate }) {
 
   return (
     <div className={styles.page}>
-      {/* ── Top Orange Nav ── */}
+      {}
       <header className={styles.topNav}>
         <div className={styles.topNavInner}>
           <div className={styles.logoArea} onClick={() => onNavigate('home')}>
@@ -621,7 +618,7 @@ export default function Dashboard({ onNavigate }) {
           <div className={styles.topRight}>
             <span className={styles.callInfo}>📞 Call 18605003456</span>
             <button className={styles.helpBtn}>24/7 Help ▾</button>
-            {/* Gender Dropdown */}
+            {}
             <div className={styles.genderDropdown}>
               <select
                 className={styles.genderSelect}
@@ -639,15 +636,15 @@ export default function Dashboard({ onNavigate }) {
         </div>
       </header>
 
-      {/* ── Sub Nav Bar ── */}
+      {}
       <div className={styles.certBar}>
         ✅ Only site to be ISO 9001:2008 &amp; VeriSign Certified &nbsp;|&nbsp;
         {gender === 'female' ? '👩 Browsing as: Female' : '👨 Browsing as: Male'}
       </div>
 
-      {/* ── Body ── */}
+      {}
       <div className={styles.body}>
-        {/* Sidebar */}
+        {}
         <aside className={styles.sidebar}>
           <button className={styles.sendEmailBtn}>✉ SEND EMAIL</button>
 
@@ -665,7 +662,7 @@ export default function Dashboard({ onNavigate }) {
             ))}
           </ul>
 
-          {/* My Shaadi box */}
+          {}
           <div className={styles.sideBox}>
             <div className={styles.sideBoxTitle}>My Shaadi</div>
             <ul className={styles.sideBoxList}>
@@ -677,7 +674,7 @@ export default function Dashboard({ onNavigate }) {
             </ul>
           </div>
 
-          {/* Quick Links */}
+          {}
           <div className={styles.sideBox}>
             <div className={styles.sideBoxTitle}>Quick Links</div>
             <ul className={styles.sideBoxList}>
@@ -685,7 +682,7 @@ export default function Dashboard({ onNavigate }) {
             </ul>
           </div>
 
-          {/* Profile ID Search */}
+          {}
           <div className={styles.profileSearch}>
             <div className={styles.profileSearchTitle}>Profile ID Search</div>
             <div className={styles.profileSearchRow}>
@@ -694,7 +691,7 @@ export default function Dashboard({ onNavigate }) {
             </div>
           </div>
 
-          {/* Useful Links */}
+          {}
           <div className={styles.usefulLinks}>
             <div className={styles.usefulLinksTitle}>Useful Links</div>
             <a href="#" className={styles.usefulLink}>👥 Refer a Friend</a>
@@ -704,10 +701,10 @@ export default function Dashboard({ onNavigate }) {
           </div>
         </aside>
 
-        {/* Main Content */}
+        {}
         {renderMain()}
 
-        {/* Right Profile Panel */}
+        {}
         <aside className={styles.profilePanel}>
           <div className={styles.activityBar}>
             Activity Factor <strong>100%</strong> <span className={styles.qMark}>?</span>
@@ -757,7 +754,7 @@ export default function Dashboard({ onNavigate }) {
             </div>
           </div>
 
-          {/* About / Partner Preference Tabs */}
+          {}
           <div className={styles.profileTabs}>
             <button
               className={`${styles.profileTab} ${activeTab === 'about' ? styles.profileTabActive : ''}`}
